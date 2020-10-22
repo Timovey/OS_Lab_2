@@ -29,9 +29,7 @@ public class SystemCore {
                 if (systemProcess.getIsEmpty()) {
                     systemProcesses.remove(i);
                     i--;
-                    break;
                 }
-               
             }
             circle++;
         }
