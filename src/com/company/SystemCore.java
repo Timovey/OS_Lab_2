@@ -7,7 +7,8 @@ public class SystemCore {
     private ArrayList<SystemProcess> systemProcesses = new ArrayList<>();
     private Random random = new Random();
     private int circle = 1;
-    private int[] priorityTime = {30, 40, 50};
+    private int timeOfProcess = 50;
+    private int differenceTime = 20;
 
     private void createProcesses(int sizeOfProcess) {
         for (int i = 0; i < sizeOfProcess; i++) {
@@ -24,17 +25,14 @@ public class SystemCore {
             System.out.println(circle + " цикл запущен");
             for (int i = 0; i < systemProcesses.size(); i++) {
                 SystemProcess systemProcess = systemProcesses.get(i);
-                while (systemProcess.getPriority() > 0) {
-                    systemProcess.load(priorityTime[systemProcess.getPriority()]);
-                    systemProcess.setPriority(systemProcess.getPriority() - 1);
-                    if (systemProcess.getIsEmpty()) {
-                        systemProcesses.remove(i);
-                        i--;
-                        break;
-                    }
+                systemProcess.load(timeOfProcess + systemProcess.getPriority() * differenceTime);
+                if (systemProcess.getIsEmpty()) {
+                    systemProcesses.remove(i);
+                    i--;
+                    break;
                 }
                 if (!systemProcess.getIsEmpty()) {
-                    systemProcess.load(priorityTime[0]);
+                    systemProcess.load(timeOfProcess);
                     if (systemProcess.getIsEmpty()) {
                         systemProcesses.remove(i);
                         i--;
