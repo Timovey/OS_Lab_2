@@ -31,13 +31,7 @@ public class SystemCore {
                     i--;
                     break;
                 }
-                if (!systemProcess.getIsEmpty()) {
-                    systemProcess.load(timeOfProcess);
-                    if (systemProcess.getIsEmpty()) {
-                        systemProcesses.remove(i);
-                        i--;
-                    }
-                }
+               
             }
             circle++;
         }
