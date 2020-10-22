@@ -7,13 +7,15 @@ public class SystemProcess {
 
     private ArrayList<SystemFlow> systemFlows = new ArrayList<>();
     private int pid;
+    private int priority;
     private boolean isEmpty = false;
     private Random random = new Random();
     private int maxSizeOfFlow = 5;
     private int maxTimeOfFlow = 80;
 
-    public SystemProcess(int pid) {
+    public SystemProcess(int pid, int priority) {
         this.pid = pid;
+        this.priority = priority;
         crateSystemFlows();
     }
 
@@ -52,6 +54,12 @@ public class SystemProcess {
             isEmpty = true;
         }
     }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+    public int getPriority() {return priority;}
+
 
     public boolean getIsEmpty() {
         return isEmpty;
